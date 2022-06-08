@@ -10,7 +10,7 @@ const EntradaBlog = ({entrada}) => {
 //necesito usar getStaticPaths (contruye los enlaces necesarios a cada blog)
 
 export async function getStaticPaths() {
-    const url = 'http://localhost:1337/api/blogs'
+    const url = `${process.env.API_URL}/api/blogs`
     const respuesta = await fetch(url)
     const entradas = await respuesta.json()
     const nvaEntradas = entradas.data
@@ -28,11 +28,10 @@ export async function getStaticPaths() {
     }
 }
 
-
 export async function getStaticProps({params: {id}}) {
 
     console.log(id)
-    const url = `http://localhost:1337/api/blogs/${id}`
+    const url = `${process.env.API_URL}/api/blogs/${id}`
     const respuesta = await fetch(url)
     const entrada = await respuesta.json() 
     
@@ -46,7 +45,7 @@ export async function getStaticProps({params: {id}}) {
 /* export async function getServerSideProps({query: {id}}) {
 
     console.log(id)
-    const url = `http://localhost:1337/api/blogs/${id}`
+    const url = `${process.env.API_URL}/api/blogs/${id}`
     const respuesta = await fetch(url)
     const entrada = await respuesta.json() 
     
