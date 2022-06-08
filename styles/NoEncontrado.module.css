@@ -1,0 +1,30 @@
+.noEncontrado {
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noEncontrado h1 {
+    color: var(--negro);
+}
+
+.enlace {
+    margin-top: 2rem;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--negro);
+    border: 2px solid var(--primary);
+    padding: 1rem 5rem;
+    transition-property: background-color color;
+    transition-duration: 0.8s;
+}
+.enlace:hover {
+    background-color: var(--primary);
+    color: var(--blanco);
+}
