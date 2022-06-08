@@ -1,9 +1,4 @@
-import { useRouter } from 'next/router'
-
-const EntradaBlog = () => {
-
-    const router = useRouter()
-    console.log(router.query)
+const EntradaBlog = ({entrada}) => {
 
   return (
     <div>
@@ -11,19 +6,55 @@ const EntradaBlog = () => {
     </div>
   )
 }
+// no puedo usar getStaticPropos directamente si tengo routing dinamico
+//necesito usar getStaticPaths (contruye los enlaces necesarios a cada blog)
 
-export async function getServerSideProps({query: {id}}) {
+export async function getStaticPaths() {
+    const url = 'http://localhost:1337/api/blogs'
+    const respuesta = await fetch(url)
+    const entradas = await respuesta.json()
+    const nvaEntradas = entradas.data
+    /* console.log(nvaEntradas) */
+    
+
+    const paths = nvaEntradas.map(entrada => ({
+        params: {id: entrada.id.toString()}
+    }))
+    /* console.log(paths) */
+
+    return {
+        paths,
+        fallback: false  //puede ser true(si tienes muchas entradas), false(si tienes pocas) o 'blocking'(comportamiento similiar a getServerSideProps )
+    }
+}
+
+
+export async function getStaticProps({params: {id}}) {
 
     console.log(id)
     const url = `http://localhost:1337/api/blogs/${id}`
     const respuesta = await fetch(url)
     const entrada = await respuesta.json() 
-    console.log(entrada)
+    
     return {
       props:{
-       
+       entrada
       }
     }
-  }
+}
+
+/* export async function getServerSideProps({query: {id}}) {
+
+    console.log(id)
+    const url = `http://localhost:1337/api/blogs/${id}`
+    const respuesta = await fetch(url)
+    const entrada = await respuesta.json() 
+    
+    return {
+      props:{
+       entrada
+      }
+    }
+} */
 
 export default EntradaBlog
