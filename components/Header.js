@@ -7,7 +7,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className="contenedor">
         <div className={styles.barra}>
-          <Link passHref href={"/"}>
+          <Link href={"/"}>
             <a>
               <Image width={400} height={100} src="/img/logo.svg" alt="Imagen logo"/>
             </a>
