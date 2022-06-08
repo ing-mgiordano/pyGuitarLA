@@ -4,7 +4,7 @@ import styles from "../styles/Blog.module.css"
 
 const Blog = ({entradas}) => {
   const nvaEntrada = entradas.data
-  console.log(nvaEntrada)
+  /* console.log(nvaEntrada) */
   
   return (
     <Layout
