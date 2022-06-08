@@ -5,12 +5,12 @@ import styles from "../styles/Entrada.module.css"
 
 const Entrada = ({nvaEntrada}) => {
     const {id, attributes} = nvaEntrada
-    const {titulo, resumen, contenido, publishedAt} = attributes
+    const {titulo, resumen, publishedAt} = attributes
   return (
     <article>
 
       {/* <Image 
-        priority='true' layout='responsive' width={800} height={600} src='https://res.cloudinary.com/coloscloud/image/upload/v1654618551/blog_3_c07e85472c.jpg' alt={`imagen blos ${titulo}`}
+        priority='true' layout='responsive' width={800} height={600} src='https://res.cloudinary.com/coloscloud/image/upload/v1654618551/blog_3_c07e85472c.jpg' alt={`imagen blog ${titulo}`}
       /> */}
 
       <div className={styles.contenido}>

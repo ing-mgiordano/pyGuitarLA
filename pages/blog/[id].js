@@ -1,10 +1,32 @@
+import Image from "next/image"
+import Layout from '../../components/Layout'
+import { formatearFecha } from "../../helpers"
+
 const EntradaBlog = ({entrada}) => {
 
-  return (
-    <div>
-        <h1>DEsde blog</h1>
-    </div>
-  )
+    const nvaEntrada = entrada.data
+    const {attributes} = nvaEntrada
+    /* console.log(attributes) */
+   
+    const {titulo, contenido, publishedAt} = attributes
+  
+    return (
+        <Layout>
+            <main className='contenedor'>
+                <h1 className='heading'>{titulo}</h1>
+                <article>
+                   {/* <Image 
+                        priority='true' layout='responsive' width={800} height={600} src='https://res.cloudinary.com/coloscloud/image/upload/v1654618551/blog_3_c07e85472c.jpg' alt={`imagen blog ${titulo}`}
+                    /> */}
+
+                    <div>
+                        <p>{formatearFecha(publishedAt)}</p>
+                        <p>{contenido}</p>
+                    </div>
+                </article>
+            </main>
+        </Layout>
+    )
 }
 // no puedo usar getStaticPropos directamente si tengo routing dinamico
 //necesito usar getStaticPaths (contruye los enlaces necesarios a cada blog)
