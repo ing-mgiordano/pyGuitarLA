@@ -22,15 +22,13 @@ const Blog = ({entradas}) => {
           ))}
         </div>
       </main>
-        
     </Layout>
-
   )
 }
 
 export async function getStaticProps() {
 
-  const url = `${process.env.API_URL}/api/blogs`
+  const url = `${process.env.API_URL}/api/blogs?populate=imagen`
   const respuesta = await fetch(url)
   const entradas = await respuesta.json() 
 

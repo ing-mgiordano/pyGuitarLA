@@ -3,22 +3,21 @@ import Layout from '../../components/Layout'
 import { formatearFecha } from "../../helpers"
 import styles from '../../styles/Entrada.module.css'
 
-const EntradaBlog = ({entrada}) => {
+const EntradaBlog = ({nvaEntrada}) => {
 
-    const nvaEntrada = entrada.data
     const {attributes} = nvaEntrada
     /* console.log(attributes) */
-   
-    const {titulo, contenido, publishedAt} = attributes
+    const {titulo, contenido, publishedAt, imagen} = attributes
+    const urlImagen = imagen.data.attributes.formats.thumbnail.url
   
     return (
         <Layout>
             <main className='contenedor'>
                 <h1 className='heading'>{titulo}</h1>
                 <article className={styles.entrada}>
-                   {/* <Image 
-                        priority='true' layout='responsive' width={800} height={600} src='https://res.cloudinary.com/coloscloud/image/upload/v1654618551/blog_3_c07e85472c.jpg' alt={`imagen blog ${titulo}`}
-                    /> */}
+                   <Image 
+                        priority='true' layout='responsive' width={800} height={600} src={urlImagen} alt={`imagen blog ${titulo}`}
+                    />
 
                     <div className={styles.contenido}>
                         <p className={styles.fecha}>{formatearFecha(publishedAt)}</p>
@@ -33,15 +32,14 @@ const EntradaBlog = ({entrada}) => {
 //necesito usar getStaticPaths (contruye los enlaces necesarios a cada blog)
 
 export async function getStaticPaths() {
-    const url = `${process.env.API_URL}/api/blogs`
+    
+    const url = `${process.env.API_URL}/api/blogs?populate=imagen`
     const respuesta = await fetch(url)
     const entradas = await respuesta.json()
     const nvaEntradas = entradas.data
     /* console.log(nvaEntradas) */
-    
-
     const paths = nvaEntradas.map(entrada => ({
-        params: {id: entrada.id.toString()}
+        params: {url: entrada.attributes.url}
     }))
     /* console.log(paths) */
 
@@ -51,16 +49,17 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({params: {id}}) {
+export async function getStaticProps({params: {url}}) {
 
-    console.log(id)
-    const url = `${process.env.API_URL}/api/blogs/${id}`
-    const respuesta = await fetch(url)
-    const entrada = await respuesta.json() 
+    console.log(url)
+    const urlBlog = `${process.env.API_URL}/api/blogs?populate=imagen&filters[url][$eq]=${url}`
+    const respuesta = await fetch(urlBlog)
+    const entrada = await respuesta.json()
+    const nvaEntrada = entrada.data
     
     return {
       props:{
-       entrada
+       nvaEntrada: nvaEntrada[0]
       }
     }
 }
