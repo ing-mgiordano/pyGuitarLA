@@ -1,22 +1,25 @@
-import Image from "next/image"
 import Link from "next/link"
+import Image from "next/image"
+import styles from "../styles/Guitarra.module.css"
 
 const Guitarra = ({guitarra}) => {
 
     const {attributes} = guitarra
     const {nombre, descripcion, precio, url, imagen} = attributes
-    const urlImagen = imagen.data.attributes.formats.thumbnail.url
+    const urlImagen = imagen.data.attributes.url
   return (
-    <div>
+    <div className={styles.guitarra}>
         <Image 
-            layout='responsive' width={500} height={350} src={urlImagen} alt={`Imagen Guitarra ${nombre}`}
+            layout='responsive' width={180} height={350} src={urlImagen} alt={`Imagen Guitarra ${nombre}`}
         />
-        <div>
+        <div className={styles.contenido}>
             <h3>{nombre}</h3>
-            <p>{descripcion}</p>
-            <p>${precio}</p>
+            <p className={styles.descripcion}>{descripcion}</p>
+            <p className={styles.precio}>${precio}</p>
             <Link href={`/guitarras/${url}`}>
-                Ver Producto
+                <a className={styles.enlace}>
+                    Ver Producto
+                </a>
             </Link>
         </div>
     </div>

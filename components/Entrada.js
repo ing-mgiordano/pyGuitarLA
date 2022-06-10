@@ -7,7 +7,7 @@ const Entrada = ({nvaEntrada}) => {
 
   const {attributes} = nvaEntrada
   const {titulo, resumen, publishedAt, imagen, url} = attributes
-  const urlImagen = imagen.data.attributes.formats.thumbnail.url
+  const urlImagen = imagen.data.attributes.url
 
   return (
     <article>
