@@ -11,7 +11,9 @@ const EntradaBlog = ({nvaEntrada}) => {
     const urlImagen = imagen.data.attributes.formats.thumbnail.url
   
     return (
-        <Layout>
+        <Layout
+            pagina={titulo}
+        >
             <main className='contenedor'>
                 <h1 className='heading'>{titulo}</h1>
                 <article className={styles.entrada}>
@@ -32,7 +34,7 @@ const EntradaBlog = ({nvaEntrada}) => {
 //necesito usar getStaticPaths (contruye los enlaces necesarios a cada blog)
 
 export async function getStaticPaths() {
-    
+
     const url = `${process.env.API_URL}/api/blogs?populate=imagen`
     const respuesta = await fetch(url)
     const entradas = await respuesta.json()
