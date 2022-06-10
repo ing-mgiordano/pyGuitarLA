@@ -10,7 +10,7 @@ const Guitarra = ({guitarra}) => {
   return (
     <div className={styles.guitarra}>
         <Image 
-            layout='responsive' width={180} height={350} src={urlImagen} alt={`Imagen Guitarra ${nombre}`}
+            priority='true' layout='responsive' width={180} height={350} src={urlImagen} alt={`Imagen Guitarra ${nombre}`}
         />
         <div className={styles.contenido}>
             <h3>{nombre}</h3>
