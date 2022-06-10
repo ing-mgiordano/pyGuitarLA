@@ -15,7 +15,6 @@ const Entrada = ({nvaEntrada}) => {
       <Image 
         priority='true' layout='responsive' width={800} height={600} src= {urlImagen} alt={`imagen blog ${titulo}`}
       />
-
       <div className={styles.contenido}>
         <h3>{titulo}</h3>
         <p className={styles.fecha}>{formatearFecha(publishedAt)}</p>
