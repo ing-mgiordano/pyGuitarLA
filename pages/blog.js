@@ -3,7 +3,7 @@ import Entrada from '../components/Entrada'
 import styles from "../styles/Blog.module.css"
 
 const Blog = ({entradas}) => {
-  const nvaEntrada = entradas.data
+  
   /* console.log(nvaEntrada) */
   
   return (
@@ -14,10 +14,10 @@ const Blog = ({entradas}) => {
         <h2 className='heading'>Blog</h2>
 
         <div className={styles.blog}>
-          {nvaEntrada.map((entrada) => (
+          {entradas.map((entrada) => (
             <Entrada 
               key={entrada.id}
-              nvaEntrada={entrada}
+              entrada={entrada}
             />
           ))}
         </div>
@@ -30,7 +30,8 @@ export async function getStaticProps() {
 
   const url = `${process.env.API_URL}/api/blogs?populate=imagen`
   const respuesta = await fetch(url)
-  const entradas = await respuesta.json() 
+  const resEntradas = await respuesta.json()
+  const entradas = resEntradas.data
 
   return {
     props:{

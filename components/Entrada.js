@@ -3,9 +3,9 @@ import Image from "next/image"
 import { formatearFecha } from "../helpers"
 import styles from "../styles/Entrada.module.css"
 
-const Entrada = ({nvaEntrada}) => {
+const Entrada = ({entrada}) => {
 
-  const {attributes} = nvaEntrada
+  const {attributes} = entrada
   const {titulo, resumen, publishedAt, imagen, url} = attributes
   const urlImagen = imagen.data.attributes.url
 

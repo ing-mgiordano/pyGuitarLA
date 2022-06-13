@@ -3,9 +3,9 @@ import Layout from '../../components/Layout'
 import { formatearFecha } from "../../helpers"
 import styles from '../../styles/Entrada.module.css'
 
-const EntradaBlog = ({nvaEntrada}) => {
+const EntradaBlog = ({entrada}) => {
 
-    const {attributes} = nvaEntrada
+    const {attributes} = entrada
     /* console.log(attributes) */
     const {titulo, contenido, publishedAt, imagen} = attributes
     const urlImagen = imagen.data.attributes.formats.thumbnail.url
@@ -37,10 +37,10 @@ export async function getStaticPaths() {
 
     const url = `${process.env.API_URL}/api/blogs?populate=imagen`
     const respuesta = await fetch(url)
-    const entradas = await respuesta.json()
-    const nvaEntradas = entradas.data
+    const resultEntradas = await respuesta.json()
+    const entradas = resultEntradas.data
     /* console.log(nvaEntradas) */
-    const paths = nvaEntradas.map(entrada => ({
+    const paths = entradas.map(entrada => ({
         params: {url: entrada.attributes.url}
     }))
     /* console.log(paths) */
@@ -56,12 +56,12 @@ export async function getStaticProps({params: {url}}) {
     console.log(url)
     const urlBlog = `${process.env.API_URL}/api/blogs?populate=imagen&filters[url][$eq]=${url}`
     const respuesta = await fetch(urlBlog)
-    const entrada = await respuesta.json()
-    const nvaEntrada = entrada.data
+    const resultEntrada = await respuesta.json()
+    const entrada = resultEntrada.data
     
     return {
       props:{
-       nvaEntrada: nvaEntrada[0]
+        entrada: entrada[0]
       }
     }
 }
