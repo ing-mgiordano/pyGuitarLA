@@ -23,6 +23,11 @@
     overflow: hidden;
 }
 
+.descripcion2 {
+    display: -webkit-box;
+    overflow: hidden;
+}
+
 .precio {
     color: var(--primary);
     font-size: 5rem;

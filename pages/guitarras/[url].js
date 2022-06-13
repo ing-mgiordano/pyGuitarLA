@@ -18,7 +18,7 @@ const Producto = ({nvaGuitarra}) => {
             />
             <div className={styles.contenido}>
                 <h3>{nombre}</h3>
-                <p className={styles.descripcion}>{descripcion}</p>
+                <p className={styles.descripcion2}>{descripcion}</p>
                 <p className={styles.precio}>${precio}</p>
 
                 <form className={styles.formulario}>
