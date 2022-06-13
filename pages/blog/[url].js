@@ -53,7 +53,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params: {url}}) {
 
-    console.log(url)
+    /* console.log(url) */
     const urlBlog = `${process.env.API_URL}/api/blogs?populate=imagen&filters[url][$eq]=${url}`
     const respuesta = await fetch(urlBlog)
     const resultEntrada = await respuesta.json()

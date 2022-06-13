@@ -3,7 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 
 
-const Layout = ({children, pagina}) => {
+const Layout = ({children, pagina, guitarra}) => {
   return (
       
     <div>
@@ -16,7 +16,9 @@ const Layout = ({children, pagina}) => {
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
       </Head>
 
-      <Header />
+      <Header 
+        guitarra={guitarra}
+      />
         
       {children}   {/* contenido de cada pagina en particular */}
 
@@ -24,6 +26,10 @@ const Layout = ({children, pagina}) => {
         
     </div>
   )
+}
+
+Layout.defaultProps = {
+  guitarra: null
 }
 
 export default Layout
