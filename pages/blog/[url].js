@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import Layout from '../../components/Layout'
 import { formatearFecha } from "../../helpers"
 import styles from '../../styles/Entrada.module.css'
@@ -25,6 +26,12 @@ const EntradaBlog = ({entrada}) => {
                         <p className={styles.fecha}>{formatearFecha(publishedAt)}</p>
                         <p className={styles.texto}>{contenido}</p>
                     </div>
+
+                    <Link href={`/blog`}>
+                        <a className={styles.enlacevolver}>
+                             Volver
+                        </a>
+                    </Link>
                 </article>
             </main>
         </Layout>

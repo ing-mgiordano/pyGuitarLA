@@ -49,3 +49,22 @@
 .texto {
     white-space: pre-wrap;
 }
+
+.enlacevolver {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--negro);
+    border: 2px solid var(--primary);
+    padding: 1rem 3rem;
+    transition-property: background-color color;
+    transition-duration: 0.8s;
+}
+.enlacevolver:hover {
+    background-color: var(--primary);
+    color: var(--blanco);
+}
