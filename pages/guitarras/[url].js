@@ -1,12 +1,34 @@
+import { useState } from "react"
 import Image from "next/image"
 import Layout from "../../components/Layout"
 import styles from "../../styles/Guitarra.module.css"
 
-const Producto = ({nvaGuitarra}) => {
+const Producto = ({nvaGuitarra, agregarCarrito}) => {
 
-    const {attributes} = nvaGuitarra
+    const [cantidad, setCantidad] = useState(1)
+
+    const {attributes, id} = nvaGuitarra
     const {nombre, precio, descripcion, imagen} = attributes
     const urlImagen = imagen.data.attributes.url
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        if(cantidad < 1) {
+            alert('Cantidad no valida')
+            return
+        }
+
+        const guitarraSeleccionada = {
+            id,
+            urlImagen,
+            nombre,
+            precio,
+            cantidad
+        }
+
+        agregarCarrito(guitarraSeleccionada)
+    }
     
   return (
     <Layout
@@ -21,11 +43,14 @@ const Producto = ({nvaGuitarra}) => {
                 <p className={styles.descripcion2}>{descripcion}</p>
                 <p className={styles.precio}>${precio}</p>
 
-                <form className={styles.formulario}>
+                <form className={styles.formulario} onSubmit={handleSubmit}>
                     <label>Cantidad:</label>
 
-                    <select>
-                        <option value=''>-- Seleccione --</option>
+                    <select
+                        value={cantidad}
+                        onChange={e => setCantidad(parseInt(e.target.value))}
+                    >
+                        <option value='0'>-- Seleccione --</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>

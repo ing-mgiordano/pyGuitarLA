@@ -1,7 +1,8 @@
 import Layout from "../components/Layout"
 import styles from "../styles/Carrito.module.css"
 
-const Carrito = () => {
+const Carrito = ({carrtio}) => {
+
   return (
     <Layout
       pagina='Carrito de Compras'
