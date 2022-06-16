@@ -85,7 +85,7 @@ const Carrito = ({carrito, actualizarCantidad, eliminarProducto}) => {
           {total > 0 ? (
             <>
               <h3>Resumen del Pedido</h3>
-              <p>Total a pagar: ${total}</p>
+              <p className={styles.subtotal}>Total a pagar: ${total}</p>
               <button type='button' className={styles.comprar}>
                 Comprar
               </button>
