@@ -40,10 +40,16 @@ function MyApp({ Component, pageProps }) {
     setCarrito(carritoActualizado)
   }
 
+  const eliminarProducto = (id) => {
+    const carritoActualizado = carrito.filter((articulo) => articulo.id !== id)
+    setCarrito(carritoActualizado)
+  }
+
   return <Component {...pageProps} 
     carrito={carrito}
     agregarCarrito={agregarCarrito}
     actualizarCantidad={actualizarCantidad}
+    eliminarProducto={eliminarProducto}
   />
 }
 
