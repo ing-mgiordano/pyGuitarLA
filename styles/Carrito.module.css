@@ -6,12 +6,12 @@
 @media (min-width:768px) {
     .contenido {
         grid-template-columns: 3fr 2fr;
+        align-items: flex-start;
     }
 }
 
 .carrito {
     padding: 3rem 0;
-
 }
 
 .producto {
@@ -90,4 +90,29 @@
     background-color: rgb(0, 0, 0);
     font-weight: 900;
     padding: 0rem;
+}
+
+.resumen {
+    background-color: antiquewhite;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+.comprar {
+    margin-top: 2rem;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--negro);
+    border: 2px solid var(--primary);
+    padding: 1rem 5rem;
+    transition-property: background-color color;
+    transition-duration: 0.8s;
+}
+.comprar:hover {
+    background-color: var(--primary);
+    color: var(--blanco);
 }

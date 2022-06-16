@@ -5,6 +5,7 @@
     align-items: center;
     max-width: 70rem;
     margin: 0 auto;
+    position: relative;
 }
 
 .contenido {
@@ -82,4 +83,19 @@
     background-color: var(--negro);
     color: var(--primary);
     cursor: pointer;
+}
+
+.enlacevolver {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 3rem;
+    font-weight: 900;
+    transition-property: color;
+    transition-duration: 0.8s;
+}
+.enlacevolver:hover {
+    color: var(--primary);
 }

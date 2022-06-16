@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import Layout from "../../components/Layout"
 import styles from "../../styles/Guitarra.module.css"
 
@@ -67,6 +68,11 @@ const Producto = ({nvaGuitarra, agregarCarrito}) => {
                         value='Agregar al Carrito'
                     />
                 </form>
+                <Link href={`/tienda`}>
+                    <a className={styles.enlacevolver}>
+                        {"<"}
+                    </a>
+                </Link>
             </div>
         </div>
     </Layout> 
