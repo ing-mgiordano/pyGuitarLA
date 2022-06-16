@@ -15,7 +15,7 @@ const Producto = ({nvaGuitarra, agregarCarrito}) => {
         e.preventDefault()
 
         if(cantidad < 1) {
-            alert('Cantidad no valida')
+            alert('Cantidad no valida') 
             return
         }
 
